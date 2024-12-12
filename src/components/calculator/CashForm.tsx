@@ -9,10 +9,11 @@ interface CashFormProps {
 
 const CashForm = ({ data, onUpdate }: CashFormProps) => {
   return (
-    <div className="space-y-8 pt-4">
-      <div className="text-center">
-        <h2 className="text-2xl font-semibold text-zakah-primary mb-3">Cash & Bank Balances</h2>
-        <p className="text-gray-600 max-w-lg mx-auto">Enter the total amount of cash you have in hand and in bank accounts that have been held for a minimum of one lunar year.</p>
+    <div className="space-y-6">
+      <div className="text-center -mt-4">
+        <p className="text-gray-600 max-w-lg mx-auto mb-8">
+          Enter the total amount of cash you have in hand and in bank accounts that have been held for a minimum of one lunar year.
+        </p>
       </div>
 
       <div className="space-y-6 max-w-md mx-auto">
@@ -31,7 +32,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
           </div>
         </div>
 
-        <div className="p-4 bg-zakah-light rounded-lg mt-8">
+        <div className="p-4 bg-zakah-light rounded-lg">
           <p className="text-sm text-gray-600">
             Include all cash in hand, checking accounts, savings accounts, and fixed deposits that have been held for at least one lunar year.
           </p>

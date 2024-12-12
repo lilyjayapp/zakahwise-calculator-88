@@ -85,7 +85,9 @@ export const ZakahCalculator = () => {
       title: "Progress Saved",
       description: "Your information has been updated.",
       duration: 1500,
-      className: "absolute bottom-20 right-[200px] w-[200px]"
+      className: "absolute bottom-20 right-[200px] w-[200px]",
+      open: true,
+      onOpenChange: () => {},
     });
   };
 
