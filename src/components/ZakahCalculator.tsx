@@ -7,23 +7,59 @@ import { useToast } from "@/components/ui/use-toast";
 import CashForm from './calculator/CashForm';
 import GoldSilverForm from './calculator/GoldSilverForm';
 import InvestmentsForm from './calculator/InvestmentsForm';
-import AssetPurposeForm from './calculator/AssetPurposeForm';
+import PropertyForm from './calculator/PropertyForm';
+import BusinessForm from './calculator/BusinessForm';
+import LiabilitiesForm from './calculator/LiabilitiesForm';
+import AgricultureForm from './calculator/AgricultureForm';
 import Summary from './calculator/Summary';
 
-const steps = ["Cash & Bank", "Gold & Silver", "Investments", "Asset Purpose", "Summary"];
+const steps = [
+  "Cash & Bank",
+  "Gold & Silver",
+  "Investments",
+  "Properties",
+  "Business Assets",
+  "Agriculture",
+  "Liabilities",
+  "Summary"
+];
 
 export const ZakahCalculator = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
-    cash: { amount: 0 },
-    goldSilver: { gold: 0, silver: 0 },
-    investments: { stocks: 0, crypto: 0 },
-    assetPurpose: {
-      purpose: 'personal',
-      monthlyIncome: 0,
-      holdingPeriod: 12,
+    cash: { amount: 0, holdingPeriod: 12 },
+    goldSilver: { gold: 0, silver: 0, holdingPeriod: 12 },
+    investments: { 
+      stocks: 0, 
+      crypto: 0,
+      purpose: 'trading',
+      holdingPeriod: 12 
+    },
+    property: {
+      rentalProperties: 0,
+      personalResidence: false,
+      rentalIncome: 0,
+      holdingPeriod: 12
+    },
+    business: {
+      inventory: 0,
+      rawMaterials: 0,
+      receivables: 0,
+      cash: 0,
+      holdingPeriod: 12
+    },
+    agriculture: {
+      type: 'irrigated',
+      value: 0,
+      expenses: 0
+    },
+    liabilities: {
+      debts: 0,
+      taxes: 0,
+      shortTermObligations: 0
     }
   });
+  
   const { toast } = useToast();
 
   const progress = ((currentStep + 1) / steps.length) * 100;
@@ -60,8 +96,14 @@ export const ZakahCalculator = () => {
       case 2:
         return <InvestmentsForm data={formData.investments} onUpdate={(data) => updateFormData('investments', data)} />;
       case 3:
-        return <AssetPurposeForm data={formData.assetPurpose} onUpdate={(data) => updateFormData('assetPurpose', data)} />;
+        return <PropertyForm data={formData.property} onUpdate={(data) => updateFormData('property', data)} />;
       case 4:
+        return <BusinessForm data={formData.business} onUpdate={(data) => updateFormData('business', data)} />;
+      case 5:
+        return <AgricultureForm data={formData.agriculture} onUpdate={(data) => updateFormData('agriculture', data)} />;
+      case 6:
+        return <LiabilitiesForm data={formData.liabilities} onUpdate={(data) => updateFormData('liabilities', data)} />;
+      case 7:
         return <Summary formData={formData} />;
       default:
         return null;
@@ -81,7 +123,7 @@ export const ZakahCalculator = () => {
             <span>Step {currentStep + 1} of {steps.length}</span>
             <span>{steps[currentStep]}</span>
           </div>
-          <Progress value={progress} className="h-2 bg-zakah-light" />
+          <Progress value={progress} className="h-2" />
         </div>
 
         <div className="min-h-[400px] animate-fade-in">
