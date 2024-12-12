@@ -84,7 +84,8 @@ export const ZakahCalculator = () => {
     toast({
       title: "Progress Saved",
       description: "Your information has been updated.",
-      duration: 1500, // Reduced duration
+      duration: 1500,
+      className: "w-[200px] absolute left-1/2 -translate-x-1/2 bottom-20",
     });
   };
 
@@ -132,7 +133,7 @@ export const ZakahCalculator = () => {
         </div>
 
         <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4">
-          <div className="max-w-2xl mx-auto flex justify-between">
+          <div className="max-w-2xl mx-auto flex justify-between items-center">
             <Button
               variant="outline"
               onClick={handleBack}
