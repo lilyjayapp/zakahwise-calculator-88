@@ -26,7 +26,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
               id="cashAmount"
               type="number"
               placeholder="0.00"
-              className="pl-8 h-11 text-lg font-bold"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]" // Added thin black border
               value={data.amount || ''}
               onChange={(e) => onUpdate({ amount: parseFloat(e.target.value) || 0 })}
             />
