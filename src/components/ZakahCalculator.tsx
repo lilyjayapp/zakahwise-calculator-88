@@ -7,9 +7,10 @@ import { useToast } from "@/components/ui/use-toast";
 import CashForm from './calculator/CashForm';
 import GoldSilverForm from './calculator/GoldSilverForm';
 import InvestmentsForm from './calculator/InvestmentsForm';
+import AssetPurposeForm from './calculator/AssetPurposeForm';
 import Summary from './calculator/Summary';
 
-const steps = ["Cash & Bank", "Gold & Silver", "Investments", "Summary"];
+const steps = ["Cash & Bank", "Gold & Silver", "Investments", "Asset Purpose", "Summary"];
 
 export const ZakahCalculator = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -17,6 +18,11 @@ export const ZakahCalculator = () => {
     cash: { amount: 0 },
     goldSilver: { gold: 0, silver: 0 },
     investments: { stocks: 0, crypto: 0 },
+    assetPurpose: {
+      purpose: 'personal',
+      monthlyIncome: 0,
+      holdingPeriod: 12,
+    }
   });
   const { toast } = useToast();
 
@@ -54,6 +60,8 @@ export const ZakahCalculator = () => {
       case 2:
         return <InvestmentsForm data={formData.investments} onUpdate={(data) => updateFormData('investments', data)} />;
       case 3:
+        return <AssetPurposeForm data={formData.assetPurpose} onUpdate={(data) => updateFormData('assetPurpose', data)} />;
+      case 4:
         return <Summary formData={formData} />;
       default:
         return null;
