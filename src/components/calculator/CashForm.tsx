@@ -10,7 +10,7 @@ interface CashFormProps {
 const CashForm = ({ data, onUpdate }: CashFormProps) => {
   return (
     <div className="space-y-6">
-      <div className="text-center -mt-4">
+      <div className="text-center">
         <h2 className="text-2xl font-semibold text-zakah-primary mb-3">Cash & Bank Balances</h2>
         <p className="text-gray-600 max-w-lg mx-auto mb-8">
           Enter the total amount of cash you have in hand and in bank accounts that have been held for a minimum of one lunar year.
