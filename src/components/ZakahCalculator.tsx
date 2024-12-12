@@ -73,7 +73,7 @@ export const ZakahCalculator = () => {
             <span>Step {currentStep + 1} of {steps.length}</span>
             <span>{steps[currentStep]}</span>
           </div>
-          <Progress value={progress} className="h-2 bg-zakah-light" indicatorClassName="bg-zakah-primary" />
+          <Progress value={progress} className="h-2 bg-zakah-light" />
         </div>
 
         <div className="min-h-[400px] animate-fade-in">

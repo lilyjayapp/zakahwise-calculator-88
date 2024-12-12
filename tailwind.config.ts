@@ -19,6 +19,7 @@ export default {
     },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
         zakah: {
           primary: "#065F46",
           secondary: "#FCD34D",
