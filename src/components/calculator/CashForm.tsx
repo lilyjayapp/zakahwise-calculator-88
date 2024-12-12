@@ -12,7 +12,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h2 className="text-xl font-semibold text-zakah-primary mb-2">Cash & Bank Balances</h2>
-        <p className="text-gray-600">Enter the total amount of cash you have in hand and in bank accounts.</p>
+        <p className="text-gray-600">Enter the total amount of cash you have in hand and in bank accounts that have been held for a calendar year.</p>
       </div>
 
       <div className="space-y-4">
