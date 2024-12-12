@@ -9,24 +9,24 @@ interface CashFormProps {
 
 const CashForm = ({ data, onUpdate }: CashFormProps) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-zakah-primary mb-2">Cash & Bank Balances</h2>
-        <p className="text-gray-600 max-w-lg mx-auto mb-4 text-sm">
+        <h2 className="text-xl font-bold text-zakah-primary mb-1">Cash & Bank Balances</h2>
+        <p className="text-gray-600 max-w-lg mx-auto mb-3 text-xs">
           Enter the total amount of cash you have in hand and in bank accounts that have been held for a minimum of one lunar year.
         </p>
       </div>
 
-      <div className="space-y-4 max-w-md mx-auto">
+      <div className="space-y-3 max-w-md mx-auto">
         <div className="space-y-1">
-          <Label htmlFor="cashAmount" className="text-lg font-semibold">Total Cash Amount</Label>
+          <Label htmlFor="cashAmount" className="text-base font-semibold">Total Cash Amount</Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-base">$</span>
             <Input
               id="cashAmount"
               type="number"
               placeholder="0.00"
-              className="pl-8 h-12 text-xl font-bold"
+              className="pl-8 h-11 text-lg font-bold"
               value={data.amount || ''}
               onChange={(e) => onUpdate({ amount: parseFloat(e.target.value) || 0 })}
             />
