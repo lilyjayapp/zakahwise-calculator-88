@@ -17,14 +17,14 @@ interface LiabilitiesFormProps {
 
 const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
   return (
-    <div className="space-y-4">
-      <div className="text-center mb-4">
+    <div className="space-y-3">
+      <div className="text-center mb-3">
         <h2 className="text-lg font-semibold text-zakah-primary">Liabilities</h2>
         <p className="text-sm text-gray-600">Enter your current debts and financial obligations.</p>
       </div>
 
-      <div className="space-y-3">
-        <div className="space-y-1.5">
+      <div className="space-y-2">
+        <div className="space-y-1">
           <Label htmlFor="debts" className="text-sm">Outstanding Debts</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
@@ -39,7 +39,7 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <Label htmlFor="taxes" className="text-sm">Due Taxes</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
@@ -54,7 +54,7 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <Label htmlFor="shortTermObligations" className="text-sm">Short-term Financial Obligations</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
@@ -70,7 +70,7 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
         </div>
       </div>
 
-      <div className="mt-4 p-3 bg-zakah-light rounded-lg">
+      <div className="mt-2 p-2 bg-zakah-light rounded-lg">
         <p className="text-xs text-gray-600">
           Liabilities are deducted from your total assets before calculating Zakah. Include all due debts and financial obligations.
         </p>
