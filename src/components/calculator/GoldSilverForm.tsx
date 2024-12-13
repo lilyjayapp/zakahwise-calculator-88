@@ -12,12 +12,12 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
     <div className="space-y-6">
       <div className="text-center mb-8">
         <h2 className="text-xl font-semibold text-zakah-primary mb-2">Gold & Silver</h2>
-        <p className="text-gray-600">Enter the weight of your gold and silver in grams.</p>
+        <p className="text-gray-600">Enter the monetary value of your gold and silver holdings.</p>
       </div>
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="goldAmount">Gold (grams)</Label>
+          <Label htmlFor="goldAmount">Gold Value ($)</Label>
           <Input
             id="goldAmount"
             type="number"
@@ -28,7 +28,7 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="silverAmount">Silver (grams)</Label>
+          <Label htmlFor="silverAmount">Silver Value ($)</Label>
           <Input
             id="silverAmount"
             type="number"
@@ -41,7 +41,7 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
 
       <div className="mt-6 p-4 bg-zakah-light rounded-lg">
         <p className="text-sm text-gray-600">
-          Include all gold and silver jewelry, coins, and bars that you've owned for at least one lunar year.
+          Enter the current market value of all gold and silver jewelry, coins, and bars that you've owned for at least one lunar year.
         </p>
       </div>
     </div>
