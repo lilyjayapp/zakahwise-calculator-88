@@ -13,7 +13,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
       <div className="text-center mb-4">
         <h2 className="text-xl font-bold text-zakah-primary">Cash & Bank Balances</h2>
         <p className="text-gray-600 max-w-lg mx-auto text-xs">
-          Enter the total amount of cash you have in hand and in bank accounts that have been held for a minimum of one lunar year.
+          Enter the total amount of cash you have in hand and in bank accounts. Include all checking accounts, savings accounts, and fixed deposits that have been held for a minimum of one calendar year.
         </p>
       </div>
 
