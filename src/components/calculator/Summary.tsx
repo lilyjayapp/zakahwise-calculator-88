@@ -43,7 +43,7 @@ const Summary = ({ formData }: SummaryProps) => {
   const silverPrice = 0.8; // USD per gram
   
   // Calculate total assets
-  const totalCash = formData.cash.holdingPeriod >= 12 ? formData.cash.amount : 0;
+  const totalCash = formData.cash.amount || 0;
   const totalGoldValue = formData.goldSilver.holdingPeriod >= 12 
     ? (formData.goldSilver.gold * goldPrice + formData.goldSilver.silver * silverPrice)
     : 0;
