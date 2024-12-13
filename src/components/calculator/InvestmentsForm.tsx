@@ -9,15 +9,15 @@ interface InvestmentsFormProps {
 
 const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
   return (
-    <div className="space-y-6">
-      <div className="text-center mb-8">
-        <h2 className="text-xl font-semibold text-zakah-primary mb-2">Investments</h2>
-        <p className="text-gray-600">Enter the current market value of your investments.</p>
+    <div className="space-y-4">
+      <div className="text-center mb-4">
+        <h2 className="text-lg font-semibold text-zakah-primary">Investments</h2>
+        <p className="text-sm text-gray-600">Enter the current market value of your investments.</p>
       </div>
 
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="stocksAmount">Stocks & Shares</Label>
+      <div className="space-y-3">
+        <div className="space-y-1.5">
+          <Label htmlFor="stocksAmount" className="text-sm">Stocks & Shares</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
@@ -31,8 +31,8 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="cryptoAmount">Cryptocurrency</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="cryptoAmount" className="text-sm">Cryptocurrency</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
@@ -47,8 +47,8 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
         </div>
       </div>
 
-      <div className="mt-6 p-4 bg-zakah-light rounded-lg">
-        <p className="text-sm text-gray-600">
+      <div className="mt-4 p-3 bg-zakah-light rounded-lg">
+        <p className="text-xs text-gray-600">
           Include investments held for at least one lunar year. Use current market values for calculation.
         </p>
       </div>
