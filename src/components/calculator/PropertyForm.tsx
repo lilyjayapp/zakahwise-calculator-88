@@ -23,7 +23,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
     <div className="space-y-3">
       <div className="text-center mb-3">
         <h2 className="text-lg font-semibold text-zakah-primary">Property Details</h2>
-        <p className="text-sm text-gray-600">Enter information about your properties and rental income.</p>
+        <p className="text-xs text-gray-600">Enter information about your properties and rental income.</p>
       </div>
 
       <div className="space-y-2">
