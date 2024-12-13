@@ -17,15 +17,15 @@ interface LiabilitiesFormProps {
 
 const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
   return (
-    <div className="space-y-6">
-      <div className="text-center mb-8">
-        <h2 className="text-xl font-semibold text-zakah-primary mb-2">Liabilities</h2>
-        <p className="text-gray-600">Enter your current debts and financial obligations.</p>
+    <div className="space-y-4">
+      <div className="text-center mb-4">
+        <h2 className="text-lg font-semibold text-zakah-primary">Liabilities</h2>
+        <p className="text-sm text-gray-600">Enter your current debts and financial obligations.</p>
       </div>
 
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="debts">Outstanding Debts</Label>
+      <div className="space-y-3">
+        <div className="space-y-1.5">
+          <Label htmlFor="debts" className="text-sm">Outstanding Debts</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
@@ -39,8 +39,8 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="taxes">Due Taxes</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="taxes" className="text-sm">Due Taxes</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
@@ -54,8 +54,8 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="shortTermObligations">Short-term Financial Obligations</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="shortTermObligations" className="text-sm">Short-term Financial Obligations</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
@@ -70,8 +70,8 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
         </div>
       </div>
 
-      <div className="mt-6 p-4 bg-zakah-light rounded-lg">
-        <p className="text-sm text-gray-600">
+      <div className="mt-4 p-3 bg-zakah-light rounded-lg">
+        <p className="text-xs text-gray-600">
           Liabilities are deducted from your total assets before calculating Zakah. Include all due debts and financial obligations.
         </p>
       </div>
