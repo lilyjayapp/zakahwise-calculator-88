@@ -3,8 +3,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 interface CashFormProps {
-  data: { amount: number };
-  onUpdate: (data: { amount: number }) => void;
+  data: { 
+    amount: number;
+    holdingPeriod: number;
+  };
+  onUpdate: (data: { 
+    amount: number;
+    holdingPeriod: number;
+  }) => void;
 }
 
 const CashForm = ({ data, onUpdate }: CashFormProps) => {
@@ -17,7 +23,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
         </p>
       </div>
 
-      <div className="space-y-1 max-w-md mx-auto">
+      <div className="space-y-4 max-w-md mx-auto">
         <div className="space-y-1">
           <Label htmlFor="cashAmount" className="text-base font-semibold">Total Cash Amount</Label>
           <div className="relative">
@@ -28,10 +34,34 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
               placeholder="0.00"
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.amount || ''}
-              onChange={(e) => onUpdate({ amount: parseFloat(e.target.value) || 0 })}
+              onChange={(e) => onUpdate({ 
+                ...data,
+                amount: parseFloat(e.target.value) || 0 
+              })}
             />
           </div>
         </div>
+
+        <div className="space-y-1">
+          <Label htmlFor="holdingPeriod" className="text-base font-semibold">Holding Period (months)</Label>
+          <Input
+            id="holdingPeriod"
+            type="number"
+            placeholder="12"
+            className="h-11 text-lg font-bold border-black border-[1px]"
+            value={data.holdingPeriod || ''}
+            onChange={(e) => onUpdate({ 
+              ...data,
+              holdingPeriod: parseFloat(e.target.value) || 0 
+            })}
+          />
+        </div>
+      </div>
+
+      <div className="mt-4 p-3 bg-zakah-light rounded-lg">
+        <p className="text-xs text-gray-600">
+          Note: Cash is only considered for Zakah if it has been held for at least one lunar year (12 months).
+        </p>
       </div>
     </div>
   );

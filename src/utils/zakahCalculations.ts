@@ -2,7 +2,6 @@ export const GOLD_PRICE = 60; // USD per gram
 export const SILVER_PRICE = 0.8; // USD per gram
 
 export const calculateTotalGoldSilver = (gold: number, silver: number, holdingPeriod: number) => {
-  // Since the input values are already in USD, we don't need to multiply by the price
   if (holdingPeriod < 12) return 0;
   return gold + silver;
 };
@@ -17,7 +16,7 @@ export const calculateAgricultureRate = (type: string) => {
 };
 
 export const calculateTotalAssets = (formData: any) => {
-  // Ensure cash amount is properly calculated based on holding period
+  // Calculate cash only if holding period is 12 months or more
   const totalCash = formData.cash.holdingPeriod >= 12 ? formData.cash.amount : 0;
   
   const totalGoldValue = calculateTotalGoldSilver(
