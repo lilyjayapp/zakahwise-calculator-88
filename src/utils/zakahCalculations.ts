@@ -29,11 +29,13 @@ export const calculateTotalAssets = (formData: any) => {
     ? formData.investments.stocks + formData.investments.crypto
     : 0;
   
-  const totalPropertyValue = formData.property.holdingPeriod >= 12
-    ? (formData.property.personalResidence ? 0 : formData.property.rentalProperties)
-    : 0;
+  // For rental properties, we only include the annual rental income, not the property value
+  const totalPropertyValue = 0; // Property value is not included in Zakah calculation
   
-  const annualRentalIncome = formData.property.rentalIncome * 12;
+  // Calculate annual rental income if the holding period is 12 months or more
+  const annualRentalIncome = formData.property.holdingPeriod >= 12
+    ? formData.property.rentalIncome * 12
+    : 0;
   
   const totalBusinessAssets = formData.business.holdingPeriod >= 12
     ? (formData.business.inventory + formData.business.rawMaterials + 
