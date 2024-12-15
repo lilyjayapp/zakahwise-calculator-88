@@ -35,14 +35,14 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               id="rentalProperties"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.rentalProperties || ''}
               onChange={(e) => onUpdate({ ...data, rentalProperties: parseFloat(e.target.value) || 0 })}
             />
           </div>
         </div>
 
-        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg">
+        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border border-black">
           <div className="flex flex-col">
             <Label htmlFor="personalResidence" className="text-sm font-semibold mb-1">
               Is this property your primary residence?
@@ -66,7 +66,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               id="rentalIncome"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.rentalIncome || ''}
               onChange={(e) => onUpdate({ ...data, rentalIncome: parseFloat(e.target.value) || 0 })}
             />
@@ -79,6 +79,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
             id="holdingPeriod"
             type="number"
             placeholder="12"
+            className="h-11 text-lg font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
           />
