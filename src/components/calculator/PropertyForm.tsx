@@ -42,13 +42,20 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 py-1">
+        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg">
+          <div className="flex flex-col">
+            <Label htmlFor="personalResidence" className="text-sm font-semibold mb-1">
+              Is this property your primary residence?
+            </Label>
+            <p className="text-xs text-gray-600">
+              {data.personalResidence ? 'This is my home' : 'This is not my primary home'}
+            </p>
+          </div>
           <Switch
             id="personalResidence"
             checked={data.personalResidence}
             onCheckedChange={(checked) => onUpdate({ ...data, personalResidence: checked })}
           />
-          <Label htmlFor="personalResidence" className="text-sm">This is my personal residence</Label>
         </div>
 
         <div className="space-y-1">
