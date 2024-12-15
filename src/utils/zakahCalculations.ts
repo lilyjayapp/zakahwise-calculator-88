@@ -17,6 +17,7 @@ export const calculateAgricultureRate = (type: string) => {
 };
 
 export const calculateTotalAssets = (formData: any) => {
+  // Ensure cash amount is properly calculated based on holding period
   const totalCash = formData.cash.holdingPeriod >= 12 ? formData.cash.amount : 0;
   
   const totalGoldValue = calculateTotalGoldSilver(
