@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
 
 interface PropertyFormProps {
   data: {
@@ -42,20 +43,22 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border border-black border-2 hover:border-zakah-primary transition-all duration-300">
-          <div className="flex flex-col">
-            <Label htmlFor="personalResidence" className="text-sm font-semibold mb-1">
-              Is this property your primary residence?
-            </Label>
-            <p className="text-xs text-gray-600">
-              {data.personalResidence ? 'This is my home' : 'This is not my primary home'}
-            </p>
+        <div className="flex flex-col space-y-2 p-4 bg-gray-50 rounded-lg border-2 border-black">
+          <Label className="text-sm font-semibold">Primary Residence Status</Label>
+          <div className="flex items-center justify-between">
+            <Button
+              type="button"
+              variant="outline"
+              className={`w-full py-2 border-2 border-black ${
+                data.personalResidence 
+                ? 'bg-zakah-light text-zakah-primary' 
+                : 'bg-white'
+              }`}
+              onClick={() => onUpdate({ ...data, personalResidence: !data.personalResidence })}
+            >
+              {data.personalResidence ? 'This is my primary home' : 'This is not my primary home'}
+            </Button>
           </div>
-          <Switch
-            id="personalResidence"
-            checked={data.personalResidence}
-            onCheckedChange={(checked) => onUpdate({ ...data, personalResidence: checked })}
-          />
         </div>
 
         <div className="space-y-1">
