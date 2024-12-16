@@ -42,7 +42,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border border-black">
+        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border border-black border-2 hover:border-zakah-primary transition-all duration-300">
           <div className="flex flex-col">
             <Label htmlFor="personalResidence" className="text-sm font-semibold mb-1">
               Is this property your primary residence?
