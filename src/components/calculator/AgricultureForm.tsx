@@ -25,7 +25,7 @@ const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
       </div>
 
       <div className="space-y-6">
-        <div className="space-y-4">
+        <div className="space-y-4 border border-black rounded-lg p-4">
           <Label>Irrigation Method</Label>
           <RadioGroup
             value={data.type}
@@ -55,7 +55,7 @@ const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
               id="value"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.value || ''}
               onChange={(e) => onUpdate({ ...data, value: parseFloat(e.target.value) || 0 })}
             />
@@ -70,7 +70,7 @@ const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
               id="expenses"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.expenses || ''}
               onChange={(e) => onUpdate({ ...data, expenses: parseFloat(e.target.value) || 0 })}
             />

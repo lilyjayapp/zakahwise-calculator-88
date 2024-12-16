@@ -32,7 +32,7 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
               id="debts"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.debts || ''}
               onChange={(e) => onUpdate({ ...data, debts: parseFloat(e.target.value) || 0 })}
             />
@@ -47,7 +47,7 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
               id="taxes"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.taxes || ''}
               onChange={(e) => onUpdate({ ...data, taxes: parseFloat(e.target.value) || 0 })}
             />
@@ -62,7 +62,7 @@ const LiabilitiesForm = ({ data, onUpdate }: LiabilitiesFormProps) => {
               id="shortTermObligations"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.shortTermObligations || ''}
               onChange={(e) => onUpdate({ ...data, shortTermObligations: parseFloat(e.target.value) || 0 })}
             />

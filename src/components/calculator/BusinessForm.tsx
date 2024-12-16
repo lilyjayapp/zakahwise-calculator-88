@@ -36,7 +36,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               id="inventory"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.inventory || ''}
               onChange={(e) => onUpdate({ ...data, inventory: parseFloat(e.target.value) || 0 })}
             />
@@ -51,7 +51,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               id="rawMaterials"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.rawMaterials || ''}
               onChange={(e) => onUpdate({ ...data, rawMaterials: parseFloat(e.target.value) || 0 })}
             />
@@ -66,7 +66,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               id="receivables"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.receivables || ''}
               onChange={(e) => onUpdate({ ...data, receivables: parseFloat(e.target.value) || 0 })}
             />
@@ -81,7 +81,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               id="cash"
               type="number"
               placeholder="0.00"
-              className="pl-8"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.cash || ''}
               onChange={(e) => onUpdate({ ...data, cash: parseFloat(e.target.value) || 0 })}
             />
@@ -94,6 +94,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
             id="holdingPeriod"
             type="number"
             placeholder="12"
+            className="h-11 text-lg font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
           />
