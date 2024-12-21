@@ -18,6 +18,7 @@ interface SummaryProps {
       personalResidence: boolean;
       rentalIncome: number;
       holdingPeriod: number;
+      isForRental: boolean;
     };
     business: {
       inventory: number;
@@ -48,9 +49,15 @@ const Summary = ({ formData }: SummaryProps) => {
     annualRentalIncome,
     totalBusinessAssets
   } = calculateTotalAssets(formData);
+
+  // Calculate property Zakat based on purpose
+  const propertyZakatableValue = formData.property.isForRental
+    ? annualRentalIncome // Only rental income is zakatable for rental properties
+    : formData.property.rentalProperties; // Full property value is zakatable if held for selling
   
   const totalWealth = totalCash + totalGoldValue + totalInvestments + 
-    totalPropertyValue + annualRentalIncome + totalBusinessAssets;
+    (formData.property.isForRental ? annualRentalIncome : propertyZakatableValue) + 
+    totalBusinessAssets;
   
   const totalLiabilities = formData.liabilities.debts + 
     formData.liabilities.taxes + 
@@ -79,8 +86,10 @@ const Summary = ({ formData }: SummaryProps) => {
           { label: "Cash & Bank", value: totalCash },
           { label: "Gold & Silver", value: totalGoldValue },
           { label: "Investments", value: totalInvestments },
-          { label: "Property Value", value: totalPropertyValue },
-          { label: "Annual Rental Income", value: annualRentalIncome },
+          { 
+            label: formData.property.isForRental ? "Annual Rental Income" : "Property Value", 
+            value: propertyZakatableValue 
+          },
           { label: "Business Assets", value: totalBusinessAssets }
         ]}
         total={{ label: "Total Assets", value: totalWealth, className: "text-zakah-primary" }}
@@ -125,8 +134,9 @@ const Summary = ({ formData }: SummaryProps) => {
           
           {netZakatableWealth >= nisabThreshold ? (
             <p className="text-sm text-gray-600 mt-4">
-              Your wealth is above the Nisab threshold. The calculated Zakah includes both standard wealth Zakah (2.5%) 
-              and agricultural Zakah based on irrigation method.
+              Your wealth is above the Nisab threshold. For properties, {formData.property.isForRental 
+                ? 'only the rental income is subject to Zakah as the property is held for rental purposes.' 
+                : 'the full property value is subject to Zakah as it is held for selling.'}
             </p>
           ) : (
             <p className="text-sm text-gray-600 mt-4">
