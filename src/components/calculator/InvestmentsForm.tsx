@@ -6,13 +6,13 @@ interface InvestmentsFormProps {
   data: {
     stocks: number;
     crypto: number;
-    purpose: string;
+    otherInvestments: number;
     holdingPeriod: number;
   };
   onUpdate: (data: {
     stocks: number;
     crypto: number;
-    purpose: string;
+    otherInvestments: number;
     holdingPeriod: number;
   }) => void;
 }
@@ -65,8 +65,8 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
               type="number"
               placeholder="0.00"
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
-              value={data.purpose || ''}
-              onChange={(e) => onUpdate({ ...data, purpose: e.target.value })}
+              value={data.otherInvestments || ''}
+              onChange={(e) => onUpdate({ ...data, otherInvestments: parseFloat(e.target.value) || 0 })}
             />
           </div>
         </div>

@@ -32,7 +32,7 @@ export const ZakahCalculator = () => {
     investments: { 
       stocks: 0, 
       crypto: 0,
-      purpose: 'trading',
+      otherInvestments: 0,
       holdingPeriod: 12 
     },
     property: {

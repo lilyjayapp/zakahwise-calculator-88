@@ -10,7 +10,7 @@ interface SummaryProps {
     investments: { 
       stocks: number;
       crypto: number;
-      purpose: string;
+      otherInvestments: number;
       holdingPeriod: number 
     };
     property: {
