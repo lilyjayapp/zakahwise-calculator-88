@@ -66,7 +66,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="rental" 
-                className="flex-1 data-[state=on]:bg-green-500 data-[state=on]:text-white"
+                className="flex-1 data-[state=on]:bg-green-500 data-[state=on]:text-white hover:bg-green-400"
               >
                 For Rental
               </ToggleGroupItem>
