@@ -58,6 +58,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               checked={data.personalResidence}
               onCheckedChange={(checked) => onUpdate({ ...data, personalResidence: checked })}
               className="border-2 border-black rounded-full data-[state=checked]:bg-zakah-primary"
+              thumbClassName="bg-black block h-5 w-5 rounded-full transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
             />
             <span className="text-xs font-medium text-gray-600">Yes</span>
           </div>
