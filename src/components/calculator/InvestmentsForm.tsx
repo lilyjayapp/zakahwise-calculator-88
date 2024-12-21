@@ -1,7 +1,6 @@
 import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 interface InvestmentsFormProps {
   data: {
@@ -57,22 +56,19 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-4 border border-black rounded-lg p-4">
-          <Label>Investment Purpose</Label>
-          <RadioGroup
-            value={data.purpose}
-            onValueChange={(value) => onUpdate({ ...data, purpose: value })}
-            className="space-y-2"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="trading" id="trading" />
-              <Label htmlFor="trading">Trading</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="long-term" id="long-term" />
-              <Label htmlFor="long-term">Long-term Investment</Label>
-            </div>
-          </RadioGroup>
+        <div className="space-y-2 border border-black rounded-lg p-4">
+          <Label htmlFor="otherInvestments">Vehicles, Art, Assets, or Any Items Intended for Investment Purposes</Label>
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+            <Input
+              id="otherInvestments"
+              type="number"
+              placeholder="0.00"
+              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
+              value={data.purpose || ''}
+              onChange={(e) => onUpdate({ ...data, purpose: e.target.value })}
+            />
+          </div>
         </div>
 
         <div className="space-y-2">
