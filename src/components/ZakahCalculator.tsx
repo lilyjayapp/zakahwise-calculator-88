@@ -116,7 +116,7 @@ export const ZakahCalculator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zakah-light to-white p-4 sm:p-6 md:p-8 pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-zakah-light to-white p-2 sm:p-3 md:p-4 pb-16">
       <Card className="max-w-2xl mx-auto p-6 shadow-lg border-zakah-primary/10 mb-16">
         <div className="flex items-center gap-2 mb-6">
           <Calculator className="w-6 h-6 text-zakah-primary" />
