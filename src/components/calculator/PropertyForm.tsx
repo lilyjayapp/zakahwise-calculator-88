@@ -30,17 +30,17 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
   }
 
   return (
-    <div className="space-y-3">
-      <div className="text-center mb-3">
+    <div className="space-y-2">
+      <div className="text-center mb-2">
         <h2 className="text-lg font-semibold text-zakah-primary">Property Details</h2>
         <p className="text-xs text-gray-600">Enter information about your properties and rental income.</p>
       </div>
 
       <div className="space-y-2">
-        <div className="flex gap-4 items-end">
+        <div className="flex gap-2 items-end">
           <div className="flex-1 space-y-1">
             <Label htmlFor="rentalProperties" className="text-sm">
-              Value of Investment Properties (this is not your primary home)
+              Value of Investment Properties
             </Label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
@@ -48,7 +48,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
                 id="rentalProperties"
                 type="number"
                 placeholder="0.00"
-                className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
+                className="pl-8 h-9 text-base font-bold border-black border-[1px]"
                 value={data.rentalProperties || ''}
                 onChange={(e) => onUpdate({ ...data, rentalProperties: parseFloat(e.target.value) || 0 })}
               />
@@ -56,9 +56,9 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between space-x-2 py-4 px-4 bg-zakah-light rounded-lg border-2 border-black hover:border-zakah-primary transition-all duration-300">
+        <div className="flex items-center justify-between space-x-2 py-2 px-3 bg-zakah-light rounded-lg border-2 border-black hover:border-zakah-primary transition-all duration-300">
           <div className="flex flex-col">
-            <Label className="text-sm font-semibold mb-1">Property Purpose</Label>
+            <Label className="text-sm font-semibold">Property Purpose</Label>
             <p className="text-xs text-gray-600">
               {data.isForRental ? 'Property is held for rental income' : 'Property is held for selling'}
             </p>
@@ -87,7 +87,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
                 id="rentalIncome"
                 type="number"
                 placeholder="0.00"
-                className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
+                className="pl-8 h-9 text-base font-bold border-black border-[1px]"
                 value={data.rentalIncome || ''}
                 onChange={(e) => onUpdate({ ...data, rentalIncome: parseFloat(e.target.value) || 0 })}
               />
@@ -95,9 +95,9 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border-2 border-black hover:border-zakah-primary transition-all duration-300">
+        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-2 rounded-lg border-2 border-black hover:border-zakah-primary transition-all duration-300">
           <div className="flex flex-col">
-            <Label htmlFor="personalResidence" className="text-sm font-semibold mb-1">
+            <Label htmlFor="personalResidence" className="text-sm font-semibold">
               Is this property your primary residence?
             </Label>
             <p className="text-xs text-gray-600">
@@ -122,7 +122,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
             id="holdingPeriod"
             type="number"
             placeholder="12"
-            className="h-11 text-lg font-bold border-black border-[1px]"
+            className="h-9 text-base font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
           />

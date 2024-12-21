@@ -116,44 +116,44 @@ export const ZakahCalculator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zakah-light to-white p-2 sm:p-3 md:p-4 pb-16">
-      <Card className="max-w-2xl mx-auto p-4 shadow-lg border-zakah-primary/10 mb-8">
-        <div className="flex items-center gap-2 mb-4">
-          <Calculator className="w-6 h-6 text-zakah-primary" />
-          <h1 className="text-2xl font-semibold text-zakah-primary">Zakah Calculator</h1>
+    <div className="min-h-screen bg-gradient-to-b from-zakah-light to-white p-1 sm:p-2 md:p-3">
+      <Card className="max-w-2xl mx-auto p-3 shadow-lg border-zakah-primary/10 mb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <Calculator className="w-5 h-5 text-zakah-primary" />
+          <h1 className="text-xl font-semibold text-zakah-primary">Zakah Calculator</h1>
         </div>
         
-        <div className="mb-4">
-          <div className="flex justify-between mb-2 text-sm text-gray-600">
+        <div className="mb-2">
+          <div className="flex justify-between mb-1 text-xs text-gray-600">
             <span>Step {currentStep + 1} of {steps.length}</span>
             <span>{steps[currentStep]}</span>
           </div>
-          <Progress value={progress} className="h-2" />
+          <Progress value={progress} className="h-1.5" />
         </div>
 
-        <div className="min-h-[350px] animate-fade-in">
+        <div className="min-h-[300px] animate-fade-in">
           {renderStep()}
         </div>
 
-        <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4">
+        <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-2">
           <div className="max-w-2xl mx-auto flex justify-between items-center">
             <Button
               variant="outline"
               onClick={handleBack}
               disabled={currentStep === 0}
-              className="border-zakah-primary text-zakah-primary hover:bg-zakah-light"
+              className="border-zakah-primary text-zakah-primary hover:bg-zakah-light text-sm h-8"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="w-3 h-3 mr-1" />
               Back
             </Button>
 
             <Button
               onClick={handleNext}
               disabled={currentStep === steps.length - 1}
-              className="bg-zakah-primary hover:bg-zakah-accent text-white"
+              className="bg-zakah-primary hover:bg-zakah-accent text-white text-sm h-8"
             >
               {currentStep === steps.length - 1 ? 'Complete' : 'Next'}
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <ArrowRight className="w-3 h-3 ml-1" />
             </Button>
           </div>
         </div>
