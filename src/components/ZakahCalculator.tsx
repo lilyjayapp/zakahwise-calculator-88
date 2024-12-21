@@ -117,13 +117,13 @@ export const ZakahCalculator = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-zakah-light to-white p-2 sm:p-3 md:p-4 pb-16">
-      <Card className="max-w-2xl mx-auto p-6 shadow-lg border-zakah-primary/10 mb-16">
-        <div className="flex items-center gap-2 mb-6">
+      <Card className="max-w-2xl mx-auto p-4 shadow-lg border-zakah-primary/10 mb-8">
+        <div className="flex items-center gap-2 mb-4">
           <Calculator className="w-6 h-6 text-zakah-primary" />
           <h1 className="text-2xl font-semibold text-zakah-primary">Zakah Calculator</h1>
         </div>
         
-        <div className="mb-8">
+        <div className="mb-4">
           <div className="flex justify-between mb-2 text-sm text-gray-600">
             <span>Step {currentStep + 1} of {steps.length}</span>
             <span>{steps[currentStep]}</span>
@@ -131,7 +131,7 @@ export const ZakahCalculator = () => {
           <Progress value={progress} className="h-2" />
         </div>
 
-        <div className="min-h-[400px] animate-fade-in">
+        <div className="min-h-[350px] animate-fade-in">
           {renderStep()}
         </div>
 
