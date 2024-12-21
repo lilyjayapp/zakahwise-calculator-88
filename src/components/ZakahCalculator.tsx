@@ -40,7 +40,7 @@ export const ZakahCalculator = () => {
       personalResidence: false,
       rentalIncome: 0,
       holdingPeriod: 12,
-      isForRental: false
+      isForRental: true  // Set to true by default
     },
     business: {
       inventory: 0,
