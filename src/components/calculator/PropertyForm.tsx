@@ -2,6 +2,8 @@ import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface PropertyFormProps {
   data: {
@@ -27,18 +29,49 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
       </div>
 
       <div className="space-y-2">
-        <div className="space-y-1">
-          <Label htmlFor="rentalProperties" className="text-sm">Value of Investment Properties</Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-            <Input
-              id="rentalProperties"
-              type="number"
-              placeholder="0.00"
-              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
-              value={data.rentalProperties || ''}
-              onChange={(e) => onUpdate({ ...data, rentalProperties: parseFloat(e.target.value) || 0 })}
-            />
+        <div className="flex gap-4 items-end">
+          <div className="flex-1 space-y-1">
+            <Label htmlFor="rentalProperties" className="text-sm">Value of Investment Properties</Label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+              <Input
+                id="rentalProperties"
+                type="number"
+                placeholder="0.00"
+                className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
+                value={data.rentalProperties || ''}
+                onChange={(e) => onUpdate({ ...data, rentalProperties: parseFloat(e.target.value) || 0 })}
+              />
+            </div>
+          </div>
+          
+          <div className="space-y-1 min-w-[200px]">
+            <Label className="text-sm">Property Purpose</Label>
+            <ToggleGroup 
+              type="single" 
+              className="border border-black rounded-md"
+              value={data.rentalIncome > 0 ? "rental" : "selling"}
+              onValueChange={(value) => {
+                if (value === "rental" && data.rentalIncome === 0) {
+                  onUpdate({ ...data, rentalIncome: 0 });
+                } else if (value === "selling") {
+                  onUpdate({ ...data, rentalIncome: 0 });
+                }
+              }}
+            >
+              <ToggleGroupItem 
+                value="selling" 
+                className="flex-1 data-[state=on]:bg-zakah-primary data-[state=on]:text-white"
+              >
+                For Selling
+              </ToggleGroupItem>
+              <ToggleGroupItem 
+                value="rental" 
+                className="flex-1 data-[state=on]:bg-zakah-primary data-[state=on]:text-white"
+              >
+                For Rental
+              </ToggleGroupItem>
+            </ToggleGroup>
           </div>
         </div>
 
@@ -63,20 +96,22 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         </div>
 
-        <div className="space-y-1">
-          <Label htmlFor="rentalIncome" className="text-sm">Monthly Rental Income</Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-            <Input
-              id="rentalIncome"
-              type="number"
-              placeholder="0.00"
-              className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
-              value={data.rentalIncome || ''}
-              onChange={(e) => onUpdate({ ...data, rentalIncome: parseFloat(e.target.value) || 0 })}
-            />
+        {data.rentalIncome !== undefined && (
+          <div className="space-y-1">
+            <Label htmlFor="rentalIncome" className="text-sm">Monthly Rental Income</Label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+              <Input
+                id="rentalIncome"
+                type="number"
+                placeholder="0.00"
+                className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
+                value={data.rentalIncome || ''}
+                onChange={(e) => onUpdate({ ...data, rentalIncome: parseFloat(e.target.value) || 0 })}
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="space-y-1">
           <Label htmlFor="holdingPeriod" className="text-sm">Holding Period (months)</Label>
