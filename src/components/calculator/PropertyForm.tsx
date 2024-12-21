@@ -2,7 +2,6 @@ import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface PropertyFormProps {
@@ -67,7 +66,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="rental" 
-                className="flex-1 data-[state=on]:bg-zakah-primary data-[state=on]:text-white"
+                className="flex-1 data-[state=on]:bg-green-500 data-[state=on]:text-white"
               >
                 For Rental
               </ToggleGroupItem>
