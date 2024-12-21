@@ -56,7 +56,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between space-x-2 py-4 px-4 bg-zakah-light rounded-lg border border-black hover:border-zakah-primary transition-all duration-300">
+        <div className="flex items-center justify-between space-x-2 py-4 px-4 bg-zakah-light rounded-lg border-2 border-black hover:border-zakah-primary transition-all duration-300">
           <div className="flex flex-col">
             <Label className="text-sm font-semibold mb-1">Property Purpose</Label>
             <p className="text-xs text-gray-600">
@@ -64,7 +64,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-gray-600">For Selling</span>
+            <span className="text-xs font-bold text-gray-800">For Selling</span>
             <Switch
               checked={data.isForRental}
               onCheckedChange={(checked) => onUpdate({ 
@@ -72,9 +72,9 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
                 isForRental: checked,
                 rentalIncome: checked ? data.rentalIncome : 0 
               })}
-              className="data-[state=checked]:bg-green-500"
+              className="border-2 border-black rounded-full data-[state=checked]:bg-zakah-primary [&>span]:bg-black"
             />
-            <span className="text-xs font-medium text-gray-600">For Rental</span>
+            <span className="text-xs font-bold text-gray-800">For Rental</span>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border border-black border-2 hover:border-zakah-primary transition-all duration-300">
+        <div className="flex items-center justify-between space-x-2 py-2 bg-gray-50 p-3 rounded-lg border-2 border-black hover:border-zakah-primary transition-all duration-300">
           <div className="flex flex-col">
             <Label htmlFor="personalResidence" className="text-sm font-semibold mb-1">
               Is this property your primary residence?
@@ -105,14 +105,14 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-gray-600">No</span>
+            <span className="text-xs font-bold text-gray-800">No</span>
             <Switch
               id="personalResidence"
               checked={data.personalResidence}
               onCheckedChange={(checked) => onUpdate({ ...data, personalResidence: checked })}
               className="border-2 border-black rounded-full data-[state=checked]:bg-zakah-primary [&>span]:bg-black"
             />
-            <span className="text-xs font-medium text-gray-600">Yes</span>
+            <span className="text-xs font-bold text-gray-800">Yes</span>
           </div>
         </div>
 
