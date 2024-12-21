@@ -91,7 +91,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               Is this property your primary residence?
             </Label>
             <p className="text-xs text-gray-600">
-              {data.personalResidence ? 'This is my home' : 'This is not my primary home'}
+              {data.personalResidence ? 'This is my home' : `This is not your primary home (${formatCurrency(data.rentalProperties)})`}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -126,6 +126,14 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
       </div>
     </div>
   );
+
+  // Helper function to format currency
+  function formatCurrency(amount: number) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount);
+  }
 };
 
 export default PropertyForm;
