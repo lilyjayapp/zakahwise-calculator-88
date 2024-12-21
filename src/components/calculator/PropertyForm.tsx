@@ -57,13 +57,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
             <span className="text-xs font-medium text-gray-600">For Selling</span>
             <Switch
               checked={data.isForRental}
-              onCheckedChange={(checked) => {
-                onUpdate({ 
-                  ...data, 
-                  isForRental: checked,
-                  rentalIncome: checked ? data.rentalIncome : 0 
-                });
-              }}
+              onCheckedChange={(checked) => onUpdate({ ...data, isForRental: checked })}
               className="data-[state=checked]:bg-green-500"
             />
             <span className="text-xs font-medium text-gray-600">For Rental</span>
