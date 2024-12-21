@@ -31,7 +31,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
       <div className="space-y-2">
         <div className="flex gap-4 items-end">
           <div className="flex-1 space-y-1">
-            <Label htmlFor="rentalProperties" className="text-sm">Value of Investment Properties</Label>
+            <Label htmlFor="rentalProperties" className="text-sm">Value of Investment Properties ({formatCurrency(data.rentalProperties)})</Label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
               <Input
@@ -91,7 +91,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
               Is this property your primary residence?
             </Label>
             <p className="text-xs text-gray-600">
-              {data.personalResidence ? 'This is my home' : `This is not your primary home (${formatCurrency(data.rentalProperties)})`}
+              {data.personalResidence ? 'This is my home' : 'This is not your primary home'}
             </p>
           </div>
           <div className="flex items-center gap-2">
