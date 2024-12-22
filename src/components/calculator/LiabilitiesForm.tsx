@@ -13,7 +13,7 @@ interface LiabilitiesFormProps {
     taxes: number;
     shortTermObligations: number;
   }) => void;
-  onNext?: () => void;  // Make onNext optional to fix the TypeScript error
+  onNext?: () => void;
 }
 
 const LiabilitiesForm = ({ data, onUpdate, onNext }: LiabilitiesFormProps) => {
@@ -56,7 +56,7 @@ const LiabilitiesForm = ({ data, onUpdate, onNext }: LiabilitiesFormProps) => {
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="shortTermObligations" className="text-sm">Short-term Financial Obligations</Label>
+          <Label htmlFor="shortTermObligations" className="text-sm">Short-term Financial Obligations (payable before your Zakat's yearly due date)</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
