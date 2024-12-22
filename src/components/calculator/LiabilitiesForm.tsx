@@ -21,7 +21,7 @@ const LiabilitiesForm = ({ data, onUpdate, onNext }: LiabilitiesFormProps) => {
     <div className="space-y-3">
       <div className="text-center mb-3">
         <h2 className="text-lg font-semibold text-zakah-primary">Liabilities</h2>
-        <p className="text-sm text-gray-600">Enter your current debts and financial obligations.</p>
+        <p className="text-sm text-gray-600">Deduct liabilities, like debts and financial obligations, from your total assets when calculating Zakat. Choose a fixed due date each year to calculate and pay your Zakat consistently.</p>
       </div>
 
       <div className="space-y-2">
@@ -73,7 +73,7 @@ const LiabilitiesForm = ({ data, onUpdate, onNext }: LiabilitiesFormProps) => {
 
       <div className="mt-2 p-2 bg-zakah-light rounded-lg">
         <p className="text-xs text-gray-600">
-          Liabilities are deducted from your total assets before calculating Zakah. Include all due debts and financial obligations.
+          Deduct liabilities, like debts and financial obligations, from your total assets when calculating Zakat. Choose a fixed due date each year to calculate and pay your Zakat consistently.
         </p>
       </div>
     </div>
