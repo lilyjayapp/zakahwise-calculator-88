@@ -59,7 +59,7 @@ const PropertyForm = ({ data, onUpdate, onNext }: PropertyFormProps) => {
         <div className="flex gap-2 items-end">
           <div className="flex-1 space-y-1">
             <Label htmlFor="rentalProperties" className="text-sm">
-              Value of Investment Properties
+              Value of Investment Properties (not your private home)
             </Label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
