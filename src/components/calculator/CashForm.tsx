@@ -11,11 +11,32 @@ interface CashFormProps {
     amount: number;
     holdingPeriod: number;
   }) => void;
+  onNext?: () => void;
 }
 
-const CashForm = ({ data, onUpdate }: CashFormProps) => {
+const CashForm = ({ data, onUpdate, onNext }: CashFormProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const form = e.currentTarget.closest('form');
+      const inputs = form?.querySelectorAll('input');
+      const currentIndex = Array.from(inputs || []).indexOf(e.target as HTMLInputElement);
+      
+      if (inputs && currentIndex === inputs.length - 1) {
+        // If it's the last input, trigger next
+        onNext?.();
+      } else if (inputs && inputs[currentIndex + 1]) {
+        // Otherwise focus next input
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  };
+
   return (
-    <div className="space-y-1">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onNext?.();
+    }} className="space-y-1">
       <div className="text-center mb-4">
         <h2 className="text-xl font-bold text-zakah-primary">Cash & Bank Balances</h2>
         <p className="text-gray-600 max-w-lg mx-auto text-xs">
@@ -38,6 +59,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
                 ...data,
                 amount: parseFloat(e.target.value) || 0 
               })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -54,6 +76,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
               ...data,
               holdingPeriod: parseFloat(e.target.value) || 0 
             })}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -63,7 +86,7 @@ const CashForm = ({ data, onUpdate }: CashFormProps) => {
           Note: Cash is only considered for Zakah if it has been held for at least one lunar year (12 months).
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

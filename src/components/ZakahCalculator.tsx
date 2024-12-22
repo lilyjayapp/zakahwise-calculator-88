@@ -68,12 +68,16 @@ export const ZakahCalculator = () => {
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(prev => prev + 1);
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleBack = () => {
     if (currentStep > 0) {
       setCurrentStep(prev => prev - 1);
+      // Scroll to top when moving to previous step
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -95,19 +99,19 @@ export const ZakahCalculator = () => {
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <CashForm data={formData.cash} onUpdate={(data) => updateFormData('cash', data)} />;
+        return <CashForm data={formData.cash} onUpdate={(data) => updateFormData('cash', data)} onNext={handleNext} />;
       case 1:
-        return <GoldSilverForm data={formData.goldSilver} onUpdate={(data) => updateFormData('goldSilver', data)} />;
+        return <GoldSilverForm data={formData.goldSilver} onUpdate={(data) => updateFormData('goldSilver', data)} onNext={handleNext} />;
       case 2:
-        return <InvestmentsForm data={formData.investments} onUpdate={(data) => updateFormData('investments', data)} />;
+        return <InvestmentsForm data={formData.investments} onUpdate={(data) => updateFormData('investments', data)} onNext={handleNext} />;
       case 3:
-        return <PropertyForm data={formData.property} onUpdate={(data) => updateFormData('property', data)} />;
+        return <PropertyForm data={formData.property} onUpdate={(data) => updateFormData('property', data)} onNext={handleNext} />;
       case 4:
-        return <BusinessForm data={formData.business} onUpdate={(data) => updateFormData('business', data)} />;
+        return <BusinessForm data={formData.business} onUpdate={(data) => updateFormData('business', data)} onNext={handleNext} />;
       case 5:
-        return <AgricultureForm data={formData.agriculture} onUpdate={(data) => updateFormData('agriculture', data)} />;
+        return <AgricultureForm data={formData.agriculture} onUpdate={(data) => updateFormData('agriculture', data)} onNext={handleNext} />;
       case 6:
-        return <LiabilitiesForm data={formData.liabilities} onUpdate={(data) => updateFormData('liabilities', data)} />;
+        return <LiabilitiesForm data={formData.liabilities} onUpdate={(data) => updateFormData('liabilities', data)} onNext={handleNext} />;
       case 7:
         return <Summary formData={formData} />;
       default:
