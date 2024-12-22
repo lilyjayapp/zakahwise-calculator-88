@@ -78,7 +78,7 @@ const InvestmentsForm = ({ data, onUpdate, onNext }: InvestmentsFormProps) => {
         </div>
 
         <div className="space-y-2 border border-black rounded-lg p-4">
-          <Label htmlFor="otherInvestments">Other Investments</Label>
+          <Label htmlFor="otherInvestments">All Other Investments (including cars, artwork, etc. for investment purposes)</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
