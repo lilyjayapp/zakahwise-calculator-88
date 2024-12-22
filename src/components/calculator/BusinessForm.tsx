@@ -17,11 +17,30 @@ interface BusinessFormProps {
     cash: number;
     holdingPeriod: number;
   }) => void;
+  onNext?: () => void;
 }
 
-const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
+const BusinessForm = ({ data, onUpdate, onNext }: BusinessFormProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const form = e.currentTarget.closest('form');
+      const inputs = form?.querySelectorAll('input');
+      const currentIndex = Array.from(inputs || []).indexOf(e.target as HTMLInputElement);
+      
+      if (inputs && currentIndex === inputs.length - 1) {
+        onNext?.();
+      } else if (inputs && inputs[currentIndex + 1]) {
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  };
+
   return (
-    <div className="space-y-6">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onNext?.();
+    }} className="space-y-6">
       <div className="text-center mb-8">
         <h2 className="text-xl font-semibold text-zakah-primary mb-2">Business Assets</h2>
         <p className="text-gray-600">Enter the value of your business assets.</p>
@@ -39,6 +58,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.inventory || ''}
               onChange={(e) => onUpdate({ ...data, inventory: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -54,6 +74,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.rawMaterials || ''}
               onChange={(e) => onUpdate({ ...data, rawMaterials: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -69,6 +90,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.receivables || ''}
               onChange={(e) => onUpdate({ ...data, receivables: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -84,6 +106,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.cash || ''}
               onChange={(e) => onUpdate({ ...data, cash: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -97,6 +120,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
             className="h-11 text-lg font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -106,7 +130,7 @@ const BusinessForm = ({ data, onUpdate }: BusinessFormProps) => {
           Business assets held for trading purposes are subject to Zakah. Fixed assets used in business operations are generally exempt.
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

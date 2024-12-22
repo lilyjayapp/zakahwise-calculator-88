@@ -13,11 +13,30 @@ interface GoldSilverFormProps {
     silver: number;
     holdingPeriod: number;
   }) => void;
+  onNext?: () => void;
 }
 
-const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
+const GoldSilverForm = ({ data, onUpdate, onNext }: GoldSilverFormProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const form = e.currentTarget.closest('form');
+      const inputs = form?.querySelectorAll('input');
+      const currentIndex = Array.from(inputs || []).indexOf(e.target as HTMLInputElement);
+      
+      if (inputs && currentIndex === inputs.length - 1) {
+        onNext?.();
+      } else if (inputs && inputs[currentIndex + 1]) {
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  };
+
   return (
-    <div className="space-y-6">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onNext?.();
+    }} className="space-y-6">
       <div className="text-center mb-8">
         <h2 className="text-xl font-semibold text-zakah-primary mb-2">Gold & Silver</h2>
         <p className="text-gray-600">Enter the value of your gold and silver assets.</p>
@@ -35,6 +54,7 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.gold || ''}
               onChange={(e) => onUpdate({ ...data, gold: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -50,6 +70,7 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.silver || ''}
               onChange={(e) => onUpdate({ ...data, silver: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -63,6 +84,7 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
             className="h-11 text-lg font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -72,7 +94,7 @@ const GoldSilverForm = ({ data, onUpdate }: GoldSilverFormProps) => {
           Zakah is due on gold and silver if the value meets the nisab threshold and has been held for one lunar year.
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

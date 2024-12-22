@@ -14,11 +14,30 @@ interface AgricultureFormProps {
     value: number;
     expenses: number;
   }) => void;
+  onNext?: () => void;
 }
 
-const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
+const AgricultureForm = ({ data, onUpdate, onNext }: AgricultureFormProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const form = e.currentTarget.closest('form');
+      const inputs = form?.querySelectorAll('input');
+      const currentIndex = Array.from(inputs || []).indexOf(e.target as HTMLInputElement);
+      
+      if (inputs && currentIndex === inputs.length - 1) {
+        onNext?.();
+      } else if (inputs && inputs[currentIndex + 1]) {
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  };
+
   return (
-    <div className="space-y-6">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onNext?.();
+    }} className="space-y-6">
       <div className="text-center mb-8">
         <h2 className="text-xl font-semibold text-zakah-primary mb-2">Agricultural Produce</h2>
         <p className="text-gray-600">Enter details about your agricultural produce and irrigation method.</p>
@@ -58,6 +77,7 @@ const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.value || ''}
               onChange={(e) => onUpdate({ ...data, value: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -73,6 +93,7 @@ const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.expenses || ''}
               onChange={(e) => onUpdate({ ...data, expenses: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -83,7 +104,7 @@ const AgricultureForm = ({ data, onUpdate }: AgricultureFormProps) => {
           Zakah rates for agricultural produce vary based on the irrigation method: 10% for natural irrigation, 5% for artificial irrigation, and 7.5% for mixed methods.
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

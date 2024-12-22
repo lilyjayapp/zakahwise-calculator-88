@@ -18,9 +18,25 @@ interface PropertyFormProps {
     holdingPeriod: number;
     isForRental: boolean;
   }) => void;
+  onNext?: () => void;
 }
 
-const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
+const PropertyForm = ({ data, onUpdate, onNext }: PropertyFormProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const form = e.currentTarget.closest('form');
+      const inputs = form?.querySelectorAll('input');
+      const currentIndex = Array.from(inputs || []).indexOf(e.target as HTMLInputElement);
+      
+      if (inputs && currentIndex === inputs.length - 1) {
+        onNext?.();
+      } else if (inputs && inputs[currentIndex + 1]) {
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  };
+
   // Helper function to format currency
   function formatCurrency(amount: number) {
     return new Intl.NumberFormat('en-US', {
@@ -30,7 +46,10 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
   }
 
   return (
-    <div className="space-y-2">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onNext?.();
+    }} className="space-y-2">
       <div className="text-center mb-2">
         <h2 className="text-lg font-semibold text-zakah-primary">Property Details</h2>
         <p className="text-xs text-gray-600">Enter information about your properties and rental income.</p>
@@ -51,6 +70,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
                 className="pl-8 h-9 text-base font-bold border-black border-[1px]"
                 value={data.rentalProperties || ''}
                 onChange={(e) => onUpdate({ ...data, rentalProperties: parseFloat(e.target.value) || 0 })}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </div>
@@ -90,6 +110,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
                 className="pl-8 h-9 text-base font-bold border-black border-[1px]"
                 value={data.rentalIncome || ''}
                 onChange={(e) => onUpdate({ ...data, rentalIncome: parseFloat(e.target.value) || 0 })}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </div>
@@ -125,6 +146,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
             className="h-9 text-base font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -134,7 +156,7 @@ const PropertyForm = ({ data, onUpdate }: PropertyFormProps) => {
           Personal residences are generally exempt from Zakah. Properties held for selling are subject to Zakah on their full value, while rental properties are subject to Zakah on the rental income if held for more than one lunar year.
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

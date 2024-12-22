@@ -15,11 +15,30 @@ interface InvestmentsFormProps {
     otherInvestments: number;
     holdingPeriod: number;
   }) => void;
+  onNext?: () => void;
 }
 
-const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
+const InvestmentsForm = ({ data, onUpdate, onNext }: InvestmentsFormProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const form = e.currentTarget.closest('form');
+      const inputs = form?.querySelectorAll('input');
+      const currentIndex = Array.from(inputs || []).indexOf(e.target as HTMLInputElement);
+      
+      if (inputs && currentIndex === inputs.length - 1) {
+        onNext?.();
+      } else if (inputs && inputs[currentIndex + 1]) {
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  };
+
   return (
-    <div className="space-y-6">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onNext?.();
+    }} className="space-y-6">
       <div className="text-center mb-8">
         <h2 className="text-xl font-semibold text-zakah-primary mb-2">Investments</h2>
         <p className="text-gray-600">Enter details about your investment holdings.</p>
@@ -37,6 +56,7 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.stocks || ''}
               onChange={(e) => onUpdate({ ...data, stocks: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -52,12 +72,13 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.crypto || ''}
               onChange={(e) => onUpdate({ ...data, crypto: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
 
         <div className="space-y-2 border border-black rounded-lg p-4">
-          <Label htmlFor="otherInvestments">Vehicles, Art, Assets, or Any Items Intended for Investment Purposes</Label>
+          <Label htmlFor="otherInvestments">Other Investments</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
@@ -67,6 +88,7 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
               className="pl-8 h-11 text-lg font-bold border-black border-[1px]"
               value={data.otherInvestments || ''}
               onChange={(e) => onUpdate({ ...data, otherInvestments: parseFloat(e.target.value) || 0 })}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -80,6 +102,7 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
             className="h-11 text-lg font-bold border-black border-[1px]"
             value={data.holdingPeriod || ''}
             onChange={(e) => onUpdate({ ...data, holdingPeriod: parseFloat(e.target.value) || 0 })}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -89,7 +112,7 @@ const InvestmentsForm = ({ data, onUpdate }: InvestmentsFormProps) => {
           Investments held for trading purposes are subject to Zakah on their full value. Long-term investments may have different considerations.
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 
