@@ -109,7 +109,7 @@ const InvestmentsForm = ({ data, onUpdate, onNext }: InvestmentsFormProps) => {
 
       <div className="mt-6 p-4 bg-zakah-light rounded-lg">
         <p className="text-sm text-gray-600">
-          Investments held for trading purposes are subject to Zakah on their full value. Long-term investments may have different considerations.
+          This applies at 2.5% if investment items are held for trade or generate income and are kept for 12 months; no Zakah is due on personal use or hobby items.
         </p>
       </div>
     </form>
