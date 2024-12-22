@@ -48,7 +48,7 @@ const BusinessForm = ({ data, onUpdate, onNext }: BusinessFormProps) => {
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="inventory">Inventory Value</Label>
+          <Label htmlFor="inventory">Inventory Value / Stock</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
             <Input
