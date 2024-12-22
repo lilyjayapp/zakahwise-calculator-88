@@ -72,9 +72,7 @@ const LiabilitiesForm = ({ data, onUpdate, onNext }: LiabilitiesFormProps) => {
       </div>
 
       <div className="mt-2 p-2 bg-zakah-light rounded-lg">
-        <p className="text-xs text-gray-600">
-          Deduct liabilities, like debts and financial obligations, from your total assets when calculating Zakat. Choose a fixed due date each year to calculate and pay your Zakat consistently.
-        </p>
+        <p className="text-xs text-gray-600"></p>
       </div>
     </div>
   );
